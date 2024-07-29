@@ -1,0 +1,94 @@
+<br /><br />
+<div>
+    <ngb-carousel class="carousel-left-spacing">
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <a><img src="assets/Images/phoneslider.jpg" alt="first slide"></a>
+        </div>
+        <div class="carousal-caption">
+          <h3></h3>
+          <p></p>
+        </div>
+      </ng-template>
+
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <a><img src="assets/Images/shoeslider.jpg " alt="first slide"></a>
+        </div>
+        <div class="carousal-caption">
+          <h3></h3>
+          <p></p>
+        </div>
+      </ng-template>
+
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <a><img src=" assets/Images/laptopslider.jpg" alt="first slide"></a>
+        </div>
+        <div class="carousal-caption">
+          <h3></h3>
+          <p></p>
+        </div>
+      </ng-template>
+
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <a><img src=" assets/Images/handloomfinalslide.jpg" alt="first slide"></a>
+        </div>
+        <div class="carousal-caption">
+          <h3></h3>
+          <p></p>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+    
+
+  </div>
+<div class="centered">
+    <mat-button-toggle-group [value]="searchType" (change)="getSelectedType($event)">
+        <mat-button-toggle value="bycategory">Product</mat-button-toggle>
+        <mat-button-toggle value="bysearch">Search</mat-button-toggle>
+    </mat-button-toggle-group>
+</div>
+<br />
+<div *ngIf="searchType === 'bysearch'" class="centered">
+    Search:&nbsp;&nbsp; <input type="text" (keydown)="getSearchWord($event)" [(ngModel)]="searchKeyword" placeholder="Search product name">
+</div>
+<br /><br />
+<br />
+<br />
+
+<div class="row">
+    <div class="col-lg-3 mt-3" *ngFor="let product of productList;index as i">
+        <div class="itemsbox" *ngIf="productList.length>0">
+            <p>{{product?.productId}}</p>
+            <h1>{{product?.name}}</h1>
+            <img [src]="product?.image" />
+            <p><b>Description:</b>{{product?.description}}</p>
+            <p><b>Quantity:</b> {{product?.quantity}}</p>
+            <p><b>Price:</b> {{product?.price | currency:'INR'}}</p>
+            <input type ="text" [id]="product?.productId" name="addquantity" placeholder="Add-quantity"/>
+            <button (click)="addToCart(product)">Add-to-cart</button>&nbsp;
+            
+        </div>
+    </div>
+</div>
+
+<div *ngIf="productList.length === 0" class="centered">
+    No Product avaiable
+</div>
+
+<br />
+<!-- <div *ngIf="bookList.length>0" class="centered">
+    <app-paging
+        [totalbook]="totalbook"
+        [pageSize]="pageSize"
+        [offset]="offset"
+        (onNextPageClick)="onNextPageClick($event)"
+        (onPreviousPageClick)="onPreviousPageClick($event)"
+        (onFirstPageClick)="onFirstPageClick($event)"
+        (onLastPageClick)="onLastPageClick($event)"
+    ></app-paging>
+</div> -->
+<br />
+

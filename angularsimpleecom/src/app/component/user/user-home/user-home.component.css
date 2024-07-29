@@ -1,0 +1,12 @@
+
+.centered {
+    display: flex;
+    justify-content: center;
+}
+
+.carousel-left-spacing {
+    margin-left: 70px; /* Adjust the value as needed */
+  }
+.row {
+    margin-left: 50px;  
+}
